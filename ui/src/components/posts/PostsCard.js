@@ -8,15 +8,11 @@ import {
   Link,
   Typography,
 } from "@mui/material";
-import burger from "../../static/burger1.jpg";
 
-const PostsCard = ({ myDirection, title, excerpt,blogHref,image }) => {
+const PostsCard = ({ myDirection, title, excerpt, blogHref, image }) => {
   return (
     <Box mt={3}>
-      <Link
-        href={blogHref}
-        sx={{ textDecoration: "none" }}
-      >
+      <Link href={blogHref} sx={{ textDecoration: "none" }}>
         <Card>
           <Box
             sx={{
@@ -44,12 +40,12 @@ const PostsCard = ({ myDirection, title, excerpt,blogHref,image }) => {
                 },
               }}
             />
-            <CardContent sx={{minHeight:'260px'}}>
+            <CardContent sx={{ minHeight: "260px" }}>
               <Typography gutterBottom variant="h5" align="center">
                 {title}
               </Typography>
               <Typography variant="h6" color="text.secondary">
-              {excerpt}
+                {excerpt}
               </Typography>
               <CardActions>
                 <Button sx={{ color: "tomato" }} size="large">

@@ -1,23 +1,23 @@
 import { Box, Link, Stack, styled, Typography } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import burger from "../../static/burger1.jpg";
 
 const Category = () => {
+  const [cat, setCat] = useState([]);
 
-  const [cat, setCat] = useState([])
-
-  useEffect( () => {
+  useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/category/`)
-        setCat(res.data)
+        const res = await axios.get(
+          `${process.env.REACT_APP_API_URL}/api/category/`
+        );
+        setCat(res.data);
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
-    }
-    fetchData()
-  }, [])
+    };
+    fetchData();
+  }, []);
 
   const StyledCard = styled(Box)(({ theme }) => ({
     display: "flex",
@@ -62,16 +62,14 @@ const Category = () => {
       ml={3}
       sx={{ maxWidth: "100%", overflow: "auto" }}
     >
-
-{cat.map(category => (
-  <Link href={`category/${category.id}`} sx={{textDecoration:'none'}}>
-            <CardBox>
+      {cat.map((category) => (
+        <Link href={`category/${category.id}`} sx={{ textDecoration: "none" }}>
+          <CardBox>
             <StyledCard sx={{ backgroundImage: `url(${category.image})` }} />
             <StyledTypography>{category.name}</StyledTypography>
           </CardBox>
-          </Link>
-        )) }
-   
+        </Link>
+      ))}
     </Stack>
   );
 };
